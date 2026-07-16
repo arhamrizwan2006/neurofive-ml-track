@@ -5,7 +5,7 @@ Exploratory Data Analysis on the Titanic dataset, done as part of the Neurofive 
 ## Files
 - `Task_1.ipynb` — notebook with the full EDA
 - `train.csv` — raw Titanic dataset (from Kaggle)
-- `cleaned_dataset.csv` — cleaned version after handling missing values
+- `cleaned_dataset_train.csv` — cleaned version after handling missing values
 
 ## What I did
 - Loaded the dataset and inspected it using `.head()`, `.tail()`, `.shape()`, `.info()`, `.describe()`
