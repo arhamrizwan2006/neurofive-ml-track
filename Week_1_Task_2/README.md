@@ -4,6 +4,7 @@ Cleaning and visualizing the Titanic dataset, done as part of the Neurofive Solu
 
 ## Files
 - `week_1_setup.ipynb` — notebook with data cleaning and visualizations
+- `train.csv` — raw dataset from Kaggle
 - `cleaned_dataset_train.csv` — dataset after handling missing values
 
 ## What I did
