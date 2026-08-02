@@ -13,8 +13,8 @@
 ## 📊 Internship Progress
 
 ```
-Week 1  ████████░░░░░░░░░░░░░░░░░░░░  Week 2  ████████░░░░░░░░░░░░░░░░░░░░  Week 3  ████░░░░░░░░░░░░░░░░░░░░░░░░
-  ✅ COMPLETE                        ✅ COMPLETE                      🔄 IN PROGRESS
+Week 1  ████████░░░░░░░░░░░░░░░░░░░░  Week 2  ████████░░░░░░░░░░░░░░░░░░░░  Week 3  ████████░░░░░░░░░░░░░░░░░░░░
+  ✅ COMPLETE                        ✅ COMPLETE                      ✅ COMPLETE
 ```
 
 | Week | Task | Topic | Status |
@@ -23,8 +23,8 @@ Week 1  ████████░░░░░░░░░░░░░░░░
 | **1** | Task 2 | Data Cleaning & Visualization | ✅ Complete |
 | **2** | Task 1 | Titanic Classification (Logistic Regression) | ✅ Complete |
 | **2** | Task 2 | Housing Price Prediction (Linear Regression) | ✅ Complete |
-| **3** | Task 1 | Model Evaluation & Hyperparameter Tuning | 🔄 In Progress |
-| **3** | Task 2 | Customer Churn Prediction (Business Problem) | 🔄 In Progress |
+| **3** | Task 1 | Model Evaluation & Hyperparameter Tuning | ✅ Complete |
+| **3** | Task 2 | Customer Churn Prediction (Business Problem) | ✅ Complete |
 
 ---
 
@@ -74,13 +74,6 @@ Raw Dataset → Load & Inspect → Identify Patterns → Visualize Trends
 Features (Age, Sex, Class, ...) → Train/Test Split → Logistic Regression → Predict (Survived?)
               ↓
            81.0% Accuracy ✅
-```
-
-**Model Performance:**
-```
-Accuracy:  81.0%
-Precision: [High survival prediction confidence]
-Recall:    [Capturing actual survivors]
 ```
 
 **What I learned:**
@@ -134,20 +127,27 @@ House Features (Size, Quality, Location, ...) → Linear Regression → Predict 
 ```
 Base Model → Calculate Metrics → GridSearchCV Tuning → Compare Performance
    ↓             ↓                    ↓                    ↓
-Logistic      Precision,        Random params      Before/After
+Logistic      Precision,        C & solver         Before/After
 Regression    Recall, F1         optimization      comparison table
 ```
 
+**Model Performance:**
+| Metric | Baseline | Tuned |
+|--------|----------|-------|
+| **Test Accuracy** | 0.81 | 0.78 |
+| **CV Mean Accuracy** | 0.791 | 0.796 |
+| **Best Params** | — | C=1, solver=liblinear |
+
 **Techniques Covered:**
-- ✅ Precision, Recall, F1-score (multi-class metrics)
+- ✅ Precision, Recall, F1-score
 - ✅ Why accuracy alone can mislead on imbalanced data
 - ✅ GridSearchCV for hyperparameter optimization
-- ✅ RandomizedSearchCV for faster search
 - ✅ Cross-validation strategies
 - ✅ Performance comparison (tuned vs baseline)
 
-**Status:** 🔄 In Progress  
-**Deliverable:** GitHub push + LinkedIn video
+**Key Insight:** Test-set accuracy dropped after tuning, but cross-validation (a more reliable signal) actually showed a slight improvement — the drop was likely random split variance, not a real regression.
+
+**Notebook:** `Week_3_Task_1/week_3_tuning.ipynb`
 
 ---
 
@@ -155,20 +155,28 @@ Regression    Recall, F1         optimization      comparison table
 *Real-world ML: solving a business problem*
 
 ```
-Telecom Dataset (20K+ customers) → EDA → Model Training → Business Insights
+Telco Dataset (7043 customers) → EDA → Model Training → Business Insights
         ↓                          ↓          ↓
-  Contract Type,              Which features   Decision Tree:
-  Tenure,                      drive churn?    Interpretable
-  Monthly Charges              ↓               results for
-                          Feature Importance  non-technical
-                                             stakeholders
+  Contract Type,              Which features   Logistic Regression:
+  Tenure,                      drive churn?    82% accuracy, best
+  Monthly Charges              ↓               performer overall
+                          Feature Importance
 ```
 
 **Problem:** Predict which customers will leave (churn)  
-**Challenge:** Imbalanced dataset (most customers stay)  
+**Challenge:** Imbalanced dataset — 73.5% stayed, 26.5% churned  
 **Approach:** Decision Tree vs Logistic Regression comparison
 
-**What I'll learn:**
+**Model Performance:**
+| Metric | Logistic Regression | Decision Tree |
+|--------|----------------------|----------------|
+| **Accuracy** | 0.82 | 0.71 |
+| **Precision (Churn)** | 0.69 | 0.46 |
+| **Recall (Churn)** | 0.60 | 0.46 |
+
+**Top 3 Churn Drivers:** MonthlyCharges (20.44%), tenure (19.96%), TotalCharges (19.80%) — together accounting for ~60% of the Decision Tree's decisions.
+
+**What I learned:**
 - ✅ Handling class imbalance in real datasets
 - ✅ Feature importance interpretation
 - ✅ Decision Tree classifier (explainability)
@@ -176,8 +184,7 @@ Telecom Dataset (20K+ customers) → EDA → Model Training → Business Insight
 - ✅ Writing business summaries for non-technical audiences
 - ✅ Presenting ML findings like pitching to a client
 
-**Status:** 🔄 In Progress  
-**Deliverable:** GitHub push + LinkedIn video presentation
+**Notebook:** `Week_3_Task_2/week_3_churn.ipynb`
 
 ---
 
@@ -240,11 +247,11 @@ neurofive-ml-track/
 │   └── README.md                   (Task documentation)
 │
 ├── Week_3_Task_1/
-│   ├── [Model Evaluation notebook] (In Progress 🔄)
+│   ├── week_3_tuning.ipynb         (Model Evaluation & Tuning notebook)
 │   └── README.md
 │
 ├── Week_3_Task_2/
-│   ├── [Churn Prediction notebook] (In Progress 🔄)
+│   ├── week_3_churn.ipynb          (Customer Churn Prediction notebook)
 │   └── README.md
 │
 └── README.md (this file)
@@ -262,20 +269,20 @@ neurofive-ml-track/
 ### Setup
 
 1. **Clone the repository**
-   ```bash
+```bash
    git clone https://github.com/arhamrizwan2006/neurofive-ml-track.git
    cd neurofive-ml-track
-   ```
+```
 
 2. **Install dependencies**
-   ```bash
+```bash
    pip install pandas numpy scikit-learn matplotlib seaborn jupyter
-   ```
+```
 
 3. **Start Jupyter**
-   ```bash
+```bash
    jupyter notebook
-   ```
+```
 
 4. **Navigate to any Week_X_Task_Y folder and open the `.ipynb` notebook**
 
@@ -288,7 +295,7 @@ neurofive-ml-track/
 ### Concepts Mastered
 ✅ **EDA (Exploratory Data Analysis)** — Understanding data before modeling  
 ✅ **Data Cleaning & Preprocessing** — Handling missing values, outliers, categorical encoding  
-✅ **Classification** — Predicting categorical outcomes (survived/not survived)  
+✅ **Classification** — Predicting categorical outcomes (survived/not survived, churn/no churn)  
 ✅ **Regression** — Predicting continuous values (house prices)  
 ✅ **Model Evaluation** — Choosing the right metrics for your problem  
 ✅ **Hyperparameter Tuning** — Optimizing model performance systematically  
@@ -312,6 +319,9 @@ neurofive-ml-track/
 | Titanic Survival | Logistic Regression | Accuracy | 81.0% ✅ |
 | House Price | Linear Regression | R² Score | 0.828 ✅ |
 | House Price | Linear Regression | RMSE | $36,325.60 |
+| Titanic (Tuned) | Logistic Regression + GridSearchCV | CV Accuracy | 79.6% |
+| Customer Churn | Logistic Regression | Accuracy | 82.0% ✅ |
+| Customer Churn | Decision Tree | Accuracy | 71.0% |
 
 ---
 
@@ -340,6 +350,6 @@ neurofive-ml-track/
 **Internship:** Neurofive Solutions ML Fundamentals  
 **Duration:** 6 weeks (Jul 2026 – Present)  
 **Intern ID:** NFS-2607-0177  
-**Status:** 🔄 Week 3 – In Progress
+**Status:** ✅ Week 3 – Complete
 
 *From data to insights. From questions to answers.* 📊🚀
