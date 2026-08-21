@@ -83,6 +83,6 @@ SMOTE nearly **1.5x'd recall** — the model went from missing 42% of fraud to m
 
 > Fraud makes up only 0.167% of this data, so a model can score near-perfect accuracy just by predicting "non-fraud" almost every time. The baseline model hit **1.00 accuracy** while missing 42% of real fraud cases. After SMOTE, recall jumped significantly — but accuracy actually *dropped slightly* to 0.99. A model that got measurably better at its actual job scored *lower* on accuracy. That's proof accuracy can't be trusted on imbalanced data — **precision and recall on the minority class** are what actually matter.
 
----
+------
 
-## 📁 Repository Contents
+## 📁 Repo
