@@ -1,7 +1,11 @@
 import streamlit as st
 import joblib
 import pandas as pd
-pipeline = joblib.load('titanic_pipeline.pkl')
+import os
+pipeline_path = os.path.join(os.path.dirname(__file__), 'titanic_pipeline.pkl')
+pipeline = joblib.load(pipeline_path)
+
+
 
 st.title("Titanic Survival Predictor")
 pclass = st.selectbox("Passenger Class", [1, 2, 3])
