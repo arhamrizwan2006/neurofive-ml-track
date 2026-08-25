@@ -8,7 +8,7 @@
 
 ![Badge](https://img.shields.io/badge/Internship-Neurofive%20Solutions-blueviolet?style=for-the-badge)
 ![Badge](https://img.shields.io/badge/Track-ML%20Fundamentals-blue?style=for-the-badge)
-![Badge](https://img.shields.io/badge/Progress-Week%204-orange?style=for-the-badge)
+![Badge](https://img.shields.io/badge/Progress-Complete-success?style=for-the-badge)
 ![Badge](https://img.shields.io/badge/Language-Python-brightgreen?style=for-the-badge)
 
 </div>
@@ -34,7 +34,7 @@
 <div align="center">
 
 ```
-Overall Progress:  ████████████████████░░░░░░░░░░  66.7%  (4 / 6 Weeks)
+Overall Progress:  ██████████████████████████████  100%  (5 / 5 Weeks)
 ```
 
 </div>
@@ -49,6 +49,8 @@ Overall Progress:  ████████████████████�
 | **3** | 2 | Customer Churn Prediction (Business Problem) | ✅ |
 | **4** | 1 | ML Pipeline & Feature Engineering | ✅ |
 | **4** | 2 | Ensemble Learning (Random Forest vs XGBoost) | ✅ |
+| **5** | 1 | Handling Imbalanced & Messy Real-World Data | ✅ |
+| **5** | 2 | Deploy Model as Live Web App | ✅ |
 
 ---
 
@@ -218,7 +220,7 @@ Telco Dataset (7043 customers) → EDA → Model Training → Business Insights
 
 </details>
 
-<details open>
+<details>
 <summary><strong>📌 Week 4 — Pipelines & Ensemble Learning</strong></summary>
 
 #### Task 1️⃣ — ML Pipeline with Feature Engineering
@@ -277,6 +279,59 @@ Same Pipeline Preprocessing → Random Forest vs XGBoost → Compare Accuracy + 
 
 </details>
 
+<details open>
+<summary><strong>📌 Week 5 — Real-World Data & Deployment</strong></summary>
+
+#### Task 1️⃣ — Handling Imbalanced & Messy Real-World Data
+*Fraud detection: when 99.8% accuracy means nothing*
+
+```
+Credit Card Fraud Dataset → Clean Duplicates → Check Class Balance → SMOTE → Compare Metrics
+   (284,807 rows)          (1,081 removed)     (99.83% / 0.17%)   (oversample minority)
+```
+
+**Model Performance (Fraud Class Only):**
+
+| Metric | Before SMOTE | After SMOTE |
+|--------|:---:|:---:|
+| **Precision** | 0.85 | 0.12 |
+| **Recall** | 0.58 | 0.86 |
+| **F1-score** | 0.69 | 0.20 |
+
+**What I learned:**
+- ✅ Why accuracy is a meaningless metric on severely imbalanced data
+- ✅ Detecting and removing duplicate records before modeling
+- ✅ Applying SMOTE to oversample the minority class — training data only, never the test set
+- ✅ The real precision/recall trade-off: SMOTE traded precision for a big recall gain, meaning the model catches far more fraud but with more false alarms
+
+**Key Insight:** A model with 99.8% accuracy can still fail at its actual job if it never catches the minority class. Precision/recall — not accuracy — tell the real story here.
+
+**Notebook:** `Week_5_Task_1/week_5_imbalance.ipynb`
+
+---
+
+#### Task 2️⃣ — Deploy Model as Live Web App
+*From notebook to a real, usable product*
+
+```
+Saved Pipeline (joblib) → Streamlit Form (7 inputs) → Live Prediction → Deployed on Streamlit Cloud
+```
+
+**🔗 [Live App](https://titanic-survival-arham.streamlit.app/)**
+
+**What I learned:**
+- ✅ Serializing a full preprocessing + model pipeline with `joblib` for reuse outside the training notebook
+- ✅ Building an interactive UI with Streamlit (`selectbox`, `slider`, `number_input`, `button`)
+- ✅ Re-deriving engineered features (FamilySize, Alone) at prediction time to match training exactly
+- ✅ Handling deployment-specific issues (relative file paths breaking on cloud servers, subfolder `requirements.txt` discovery)
+- ✅ Deploying a public app via Streamlit Community Cloud, connected directly to a GitHub subfolder
+
+**Key Insight:** A model isn't done just because it's accurate — turning it into something a non-technical person can actually use (a live link, not a notebook) is its own skill, with its own gotchas (like the app running from a different working directory in the cloud than it does locally).
+
+**Notebook:** `Week_5_Task_2/week_5_deployement.ipynb`
+
+</details>
+
 ---
 
 ## 🛠️ Tech Stack
@@ -295,9 +350,11 @@ Same Pipeline Preprocessing → Random Forest vs XGBoost → Compare Accuracy + 
 **Machine Learning**
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
 ![XGBoost](https://img.shields.io/badge/XGBoost-006ACC?style=for-the-badge)
+![imbalanced-learn](https://img.shields.io/badge/imbalanced--learn-SMOTE-red?style=for-the-badge)
 
-**Model Persistence**
+**Model Persistence & Deployment**
 ![joblib](https://img.shields.io/badge/joblib-4B8BBE?style=for-the-badge)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 
 **Environment & Tooling**
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
@@ -352,6 +409,17 @@ neurofive-ml-track/
 │   ├── train.csv
 │   └── README.md
 │
+├── Week_5_Task_1/
+│   ├── week_5_imbalance.ipynb      (Imbalanced & Messy Data notebook)
+│   └── README.md
+│
+├── Week_5_Task_2/
+│   ├── week_5_deployement.ipynb    (Deployment notebook)
+│   ├── app.py                      (Streamlit app source)
+│   ├── titanic_pipeline.pkl        (Deployed model pipeline)
+│   ├── requirements.txt            (Dependencies for deployment)
+│   └── README.md
+│
 └── README.md (this file)
 ```
 
@@ -374,7 +442,7 @@ cd neurofive-ml-track
 
 2. **Install dependencies**
 ```bash
-pip install pandas numpy scikit-learn xgboost joblib matplotlib seaborn jupyter
+pip install pandas numpy scikit-learn xgboost imbalanced-learn joblib streamlit matplotlib seaborn jupyter
 ```
 
 3. **Start Jupyter**
@@ -386,6 +454,11 @@ jupyter notebook
 
 5. **Run cells sequentially** to reproduce results and see the workflow
 
+6. **To try the deployed app locally**, go to `Week_5_Task_2/`, install its requirements, and run:
+```bash
+streamlit run app.py
+```
+
 ---
 
 ## 💡 Key Takeaways
@@ -393,7 +466,7 @@ jupyter notebook
 ### Concepts Mastered
 ✅ **EDA (Exploratory Data Analysis)** — Understanding data before modeling
 ✅ **Data Cleaning & Preprocessing** — Handling missing values, outliers, categorical encoding
-✅ **Classification** — Predicting categorical outcomes (survived/not survived, churn/no churn)
+✅ **Classification** — Predicting categorical outcomes (survived/not survived, churn/no churn, fraud/not fraud)
 ✅ **Regression** — Predicting continuous values (house prices)
 ✅ **Model Evaluation** — Choosing the right metrics for your problem
 ✅ **Hyperparameter Tuning** — Optimizing model performance systematically
@@ -403,6 +476,8 @@ jupyter notebook
 ✅ **ML Pipelines** — Chaining preprocessing and modeling into reusable, leak-proof objects
 ✅ **Ensemble Learning** — Comparing bagging (Random Forest) vs boosting (XGBoost)
 ✅ **Model Persistence** — Saving and reloading trained models with joblib
+✅ **Imbalanced Data Handling** — SMOTE, class weighting, and metric selection beyond accuracy
+✅ **Model Deployment** — Serving a trained model through a live, interactive web app
 
 ### Real-World Skills
 🔧 End-to-end ML workflow (data → model → evaluation → deployment)
@@ -411,6 +486,7 @@ jupyter notebook
 🔧 Handling imbalanced datasets
 🔧 Working with real Kaggle datasets
 🔧 Building production-style pipelines instead of notebook-only workflows
+🔧 Shipping a working app to a public URL, not just a notebook
 
 ---
 
@@ -427,6 +503,9 @@ jupyter notebook
 | Titanic (Pipeline) | Logistic Regression | Accuracy | 79.3% |
 | Titanic (Ensemble) | Random Forest | Accuracy | 82.7% ✅ |
 | Titanic (Ensemble) | XGBoost | Accuracy | 77.7% |
+| Fraud Detection (Before SMOTE) | Logistic Regression | Recall (Fraud) | 58% |
+| Fraud Detection (After SMOTE) | Logistic Regression | Recall (Fraud) | 86% ✅ |
+| Deployment | Logistic Regression Pipeline | Live App | ✅ Deployed |
 
 ---
 
@@ -438,6 +517,8 @@ jupyter notebook
 - 🏠 [Kaggle Datasets](https://www.kaggle.com/datasets)
 - 🤖 [ML Mastery Blog](https://machinelearningmastery.com/)
 - 🌲 [XGBoost Documentation](https://xgboost.readthedocs.io/)
+- ⚖️ [imbalanced-learn Documentation](https://imbalanced-learn.org/)
+- 🚀 [Streamlit Documentation](https://docs.streamlit.io/)
 
 ---
 
@@ -448,6 +529,7 @@ jupyter notebook
 3. Open the Jupyter notebook
 4. Run the cells and follow along
 5. Modify code to experiment and learn
+6. Or just try the [live deployed app](https://titanic-survival-arham.streamlit.app/) directly — no setup needed
 
 **Each notebook is fully commented and beginner-friendly!**
 
@@ -458,7 +540,7 @@ jupyter notebook
 **Internship:** Neurofive Solutions ML Fundamentals
 **Duration:** 6 weeks (Jul 2026 – Present)
 **Intern ID:** `NFS-2607-0177`
-**Status:** ✅ Week 4 — Complete
+**Status:** ✅ Week 5 — Complete (Internship Program Finished)
 
 *From data to insights. From questions to answers.* 📊🚀
 
