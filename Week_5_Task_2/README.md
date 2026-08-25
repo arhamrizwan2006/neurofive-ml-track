@@ -1,35 +1,76 @@
-# Week 5 Task 2 — Deploy Model as Live Web App
+# 🚢 Week 5 Task 2 — Deploy Model as Live Web App
 
-## Overview
-This task takes the best-performing saved model pipeline from a previous week and deploys it as a live, interactive web app using Streamlit. Users can input passenger details and get a real-time survival prediction.
+![Status](https://img.shields.io/badge/status-complete-brightgreen)
+![Python](https://img.shields.io/badge/python-3.14-blue)
+![Streamlit](https://img.shields.io/badge/streamlit-live-ff4b4b)
 
-## Live App
-🔗 **[Try it here](https://titanic-survival-arham.streamlit.app/)**
+> Deploying a trained ML pipeline as a live, interactive prediction tool — turning a notebook model into a real product anyone can use.
 
-## Model Used
-The deployed model is the Logistic Regression pipeline from **Week 4 Task 1** (`titanic_pipeline.pkl`), which includes:
-- Preprocessing: median imputation + scaling for numeric features, most-frequent imputation + one-hot encoding for categorical features
-- Classifier: Logistic Regression
-- Features used: Age, Fare, SibSp, Parch, FamilySize, Pclass, Sex, Embarked, Alone
+---
 
-## How It Works
-1. User inputs passenger details (class, sex, age, siblings/spouses aboard, parents/children aboard, fare, port of embarkation) via the web form
-2. The app derives `FamilySize` and `Alone` from the raw inputs (matching the feature engineering done during training)
-3. The saved pipeline preprocesses the input and returns a survival prediction with confidence percentage
+## 🔗 Live Demo
 
-## Tech Stack
-- `streamlit` — web app framework
-- `pandas` — data handling
-- `scikit-learn` — model pipeline
-- `joblib` — model serialization/loading
+**[👉 Try the app here](https://titanic-survival-arham.streamlit.app/)**
 
-## Running Locally
-```bash
+Enter passenger details and get an instant survival prediction with confidence score.
+
+---
+
+## 📸 What It Does
+
+A simple web interface sits on top of a trained Logistic Regression pipeline. Users fill in passenger details — class, sex, age, family aboard, fare, and port of embarkation — and the app returns:
+- ✅ / ❌ Survival prediction
+- 📊 Model confidence percentage
+
+---
+
+## 🧠 Model Details
+
+| Component | Detail |
+|---|---|
+| Source | Week 4 Task 1 pipeline (titanic_pipeline.pkl) |
+| Algorithm | Logistic Regression |
+| Preprocessing | Median imputation + scaling (numeric), most-frequent imputation + one-hot encoding (categorical) |
+| Features | Age, Fare, SibSp, Parch, FamilySize, Pclass, Sex, Embarked, Alone |
+| Engineered features | FamilySize = SibSp + Parch + 1, Alone = 1 if FamilySize == 1 |
+
+---
+
+## ⚙️ How It Works
+
+1. User submits passenger details via the form
+2. App derives FamilySize and Alone from raw inputs — replicating the exact feature engineering used at training time
+3. The saved pipeline (preprocessing + model bundled together) transforms the input and generates a prediction in one step
+4. Result is displayed with a confidence score
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| streamlit | Web app framework |
+| pandas | Data handling |
+| scikit-learn | Model + preprocessing pipeline |
+| joblib | Model serialization |
+
+---
+
+## ▶️ Run It Locally
+
 pip install -r requirements.txt
 streamlit run app.py
-```
 
-## Files
-- `app.py` — Streamlit app source code
-- `titanic_pipeline.pkl` — trained model pipeline (from Week 4 Task 1)
-- `requirements.txt` — Python dependencies
+---
+
+## 📁 Files
+
+Week_5_Task_2/
+- app.py — Streamlit app source
+- titanic_pipeline.pkl — Trained model pipeline (Week 4 Task 1)
+- requirements.txt — Python dependencies
+- README.md
+
+---
+
+*Part of the Neurofive Solutions ML Fundamentals internship — Week 5.*
