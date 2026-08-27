@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  🔗 <a href="PASTE_YOUR_LIVE_STREAMLIT_URL_HERE"><b>Try the live app</b></a> &nbsp;|&nbsp;
+  🔗 <a href=https://default-risk-ml.streamlit.app/><b>Try the live app</b></a> &nbsp;|&nbsp;
   📓 <a href="week_6_capstone.ipynb"><b>View the notebook</b></a>
 </p>
 
