@@ -1,8 +1,13 @@
+import os
 import streamlit as st
 import joblib
 import numpy as np
 
-model = joblib.load('loan_default_model.pkl')
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, 'loan_default_model.pkl')
+
+model = joblib.load(model_path)
 
 st.title("Loan Default Risk Predictor")
 st.write("Enter applicant details to estimate the risk of serious delinquency within 2 years.")
