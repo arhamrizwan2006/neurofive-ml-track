@@ -13,7 +13,7 @@
 
 <p align="center">
   🔗 <a href=https://default-risk-ml.streamlit.app/><b>Try the live app</b></a> &nbsp;|&nbsp;
-  📓 <a href=["week_6_capstone.ipynb"](https://github.com/arhamrizwan2006/neurofive-ml-track/blob/main/Week_6_Capstone/Final_CapStone_Project.ipynb)><b>View the notebook</b></a>
+  📓 <a href="week_6_capstone.ipynb"><b>View the notebook</b></a>
 </p>
 
 ---
