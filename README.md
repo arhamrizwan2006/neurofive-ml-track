@@ -46,7 +46,7 @@ neurofive-ml-track/
 │   ├── README.md
 │   ├── cleaned_dataset_train.csv
 │   ├── train.csv
-│   └── week_1_setup.ipynb
+│   └── week_1_cleaning.ipynb
 │
 ├── Week_2_Task_1/                  (Titanic Classification — Logistic Regression)
 │   ├── README.md
@@ -119,7 +119,7 @@ neurofive-ml-track/
 | Task | Focus | Notebook |
 |---|---|---|
 | Task 1 | Titanic Exploratory Data Analysis | [`week_1_setup.ipynb`](./Week_1_Task_1/week_1_setup.ipynb) |
-| Task 2 | Data cleaning, missing values, visualizations | [`week_1_setup.ipynb`](./Week_1_Task_2/week_1_setup.ipynb) |
+| Task 2 | Data cleaning, missing values, visualizations | [`week_1_cleaning.ipynb`](./Week_1_Task_2/week_1_cleaning.ipynb) |
 
 </details>
 
